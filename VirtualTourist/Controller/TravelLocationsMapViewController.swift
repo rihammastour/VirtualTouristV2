@@ -13,17 +13,23 @@ import CoreData
 class TravelLocationsMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    var dataController: DataController!
+
+
+//    var dataController: DataController!
+    var dataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     var pinSelected:Pin!
     var annotations = [MKAnnotation]()
     
+    @IBOutlet weak var deletePinsButton: UIButton!
+    
+    @IBOutlet weak var appearanceSegment: UISegmentedControl!
     var fetchedResultsController:NSFetchedResultsController<Pin>!
     
     fileprivate func setUpFetchedResultsController() {
         let fetchRequest:NSFetchRequest<Pin> = Pin.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
+        debugPrint(dataController)
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         
@@ -40,7 +46,7 @@ class TravelLocationsMapViewController: UIViewController {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action:
             #selector(longTap(_:)))
         mapView.addGestureRecognizer(longPressGesture)
-        
+
         mapView.delegate = self
         setUpFetchedResultsController()
         showPins()
@@ -48,6 +54,9 @@ class TravelLocationsMapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(deletePins(_:)))
+        deletePinsButton.addGestureRecognizer(tap)
         
         setUpFetchedResultsController()
         
@@ -60,10 +69,13 @@ class TravelLocationsMapViewController: UIViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "photosSegue" ) {
+        if segue.identifier == "photosSegue" {
             if let vc = segue.destination as? PhotoAlbumViewController {
                 vc.dataController = dataController
                 vc.pin = pinSelected
+                vc.appearanceSement = appearanceSegment
+                vc.segmentControl(segment: appearanceSegment)
+
             }
         }
     }
@@ -84,9 +96,25 @@ class TravelLocationsMapViewController: UIViewController {
         pin.creationDate = Date()
         try? dataController.viewContext.save()
     }
-
-    func showPins(){
+    
+    @objc func deletePins(_ sender: UIGestureRecognizer) {
+          if var result = fetchedResultsController.fetchedObjects {
+                for pin in result {
+                    for annotaion in annotations {
+                        mapView.removeAnnotation(annotaion)
+                    }
+                    dataController.viewContext.delete(pin)
+                    mapView.reloadInputViews()
+                    try? dataController.viewContext.save()
+              }
+            
+              print("Successfully deleted")
+              result.removeAll()
+          }
+       }
         
+    func showPins(){
+    
         for location in fetchedResultsController.fetchedObjects! {
             
             let latitude = location.lat
@@ -105,11 +133,11 @@ class TravelLocationsMapViewController: UIViewController {
             
         }
         
-        
         if let lastPin = fetchedResultsController.fetchedObjects?.first {
             zooming(lastPin: lastPin)
             
         }
+
     }
     
     func zooming(lastPin:Pin){
@@ -119,8 +147,21 @@ class TravelLocationsMapViewController: UIViewController {
         self.mapView.setRegion(region, animated: true)
         
     }
+    
+    @IBAction func segmentControl(_ sender: Any) {
+        switch appearanceSegment.selectedSegmentIndex {
+            case 0:
+                overrideUserInterfaceStyle = .light
+            case 1:
+                overrideUserInterfaceStyle = .dark
+            case 2:
+                overrideUserInterfaceStyle = .unspecified
+            default:
+                break
+             }
+    }
+    
 }
-
 
 extension Pin: MKAnnotation {
     
@@ -196,5 +237,6 @@ extension TravelLocationsMapViewController: MKMapViewDelegate {
             }
         }
     }
+    
     
 }

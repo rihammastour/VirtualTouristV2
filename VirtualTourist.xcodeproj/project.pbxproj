@@ -20,6 +20,8 @@
 		4E75D6A424E38FAC00AADE4C /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75D6A324E38FAC00AADE4C /* PhotoAlbumViewController.swift */; };
 		4E75D6A624E3934C00AADE4C /* PhotoAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75D6A524E3934C00AADE4C /* PhotoAlbumCollectionViewCell.swift */; };
 		4E75D6A924E5BFB100AADE4C /* Photo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E75D6A824E5BFB100AADE4C /* Photo+Extensions.swift */; };
+		4E75D6AE24E6477700AADE4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E75D6B024E6477700AADE4C /* InfoPlist.strings */; };
+		4EA486D824E70BC100F6BE85 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA486D724E70BC100F6BE85 /* TextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,10 @@
 		4E75D6A324E38FAC00AADE4C /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		4E75D6A524E3934C00AADE4C /* PhotoAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E75D6A824E5BFB100AADE4C /* Photo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extensions.swift"; sourceTree = "<group>"; };
+		4E75D6AA24E6397900AADE4C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		4E75D6AB24E6397A00AADE4C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4E75D6AF24E6477700AADE4C /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4EA486D724E70BC100F6BE85 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				4E75D66624E33CC100AADE4C /* AppDelegate.swift */,
+				4EA486D724E70BC100F6BE85 /* TextFieldDelegate.swift */,
 				4E75D67C24E33F3F00AADE4C /* Model */,
 				4E75D67B24E33F3B00AADE4C /* View */,
 				4E75D67A24E33F3200AADE4C /* Controller */,
@@ -95,6 +102,7 @@
 				4E75D66C24E33CC100AADE4C /* Main.storyboard */,
 				4E75D67124E33CCA00AADE4C /* LaunchScreen.storyboard */,
 				4E75D6A524E3934C00AADE4C /* PhotoAlbumCollectionViewCell.swift */,
+				4E75D6B024E6477700AADE4C /* InfoPlist.strings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -102,10 +110,10 @@
 		4E75D67C24E33F3F00AADE4C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E75D68C24E3830000AADE4C /* DataController.swift */,
+				4E75D68924E380CE00AADE4C /* LocationData.xcdatamodeld */,
 				4E75D68E24E383D700AADE4C /* Managed Object Model */,
 				4E75D68224E349ED00AADE4C /* Network */,
-				4E75D68924E380CE00AADE4C /* LocationData.xcdatamodeld */,
-				4E75D68C24E3830000AADE4C /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,8 +121,7 @@
 		4E75D68224E349ED00AADE4C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				4E75D68324E34A0A00AADE4C /* FlickrAPI.swift */,
-				4E75D68724E3640500AADE4C /* GetPhotoResponse.swift */,
+				4EA486D124E70ADC00F6BE85 /* FlickrAPI */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -126,6 +133,23 @@
 				4E75D6A824E5BFB100AADE4C /* Photo+Extensions.swift */,
 			);
 			path = "Managed Object Model";
+			sourceTree = "<group>";
+		};
+		4EA486D124E70ADC00F6BE85 /* FlickrAPI */ = {
+			isa = PBXGroup;
+			children = (
+				4E75D68324E34A0A00AADE4C /* FlickrAPI.swift */,
+				4EA486D324E70AEC00F6BE85 /* Responses */,
+			);
+			path = FlickrAPI;
+			sourceTree = "<group>";
+		};
+		4EA486D324E70AEC00F6BE85 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				4E75D68724E3640500AADE4C /* GetPhotoResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +194,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 4E75D65A24E33CC000AADE4C;
 			productRefGroup = 4E75D66424E33CC100AADE4C /* Products */;
@@ -187,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E75D67324E33CCA00AADE4C /* LaunchScreen.storyboard in Resources */,
+				4E75D6AE24E6477700AADE4C /* InfoPlist.strings in Resources */,
 				4E75D67024E33CCA00AADE4C /* Assets.xcassets in Resources */,
 				4E75D66E24E33CC100AADE4C /* Main.storyboard in Resources */,
 			);
@@ -201,6 +227,7 @@
 			files = (
 				4E75D6A624E3934C00AADE4C /* PhotoAlbumCollectionViewCell.swift in Sources */,
 				4E75D6A424E38FAC00AADE4C /* PhotoAlbumViewController.swift in Sources */,
+				4EA486D824E70BC100F6BE85 /* TextFieldDelegate.swift in Sources */,
 				4E75D67E24E33F6000AADE4C /* TravelLocationsMapViewController.swift in Sources */,
 				4E75D68424E34A0A00AADE4C /* FlickrAPI.swift in Sources */,
 				4E75D68D24E3830000AADE4C /* DataController.swift in Sources */,
@@ -219,6 +246,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E75D66D24E33CC100AADE4C /* Base */,
+				4E75D6AA24E6397900AADE4C /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -227,8 +255,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				4E75D67224E33CCA00AADE4C /* Base */,
+				4E75D6AB24E6397A00AADE4C /* ar */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4E75D6B024E6477700AADE4C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E75D6AF24E6477700AADE4C /* ar */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -238,6 +275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -298,6 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

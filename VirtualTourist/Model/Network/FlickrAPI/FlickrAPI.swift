@@ -15,7 +15,7 @@ class FlickrAPI {
     
     static func getPhotos(lat:Double, lon:Double, completionHandler: @escaping (_ data: [Any]?, _ errString:String?) -> Void){
         
-        let url = URL(string: baseURL + apiKeyParam + "&method=flickr.photos.search" + "&lat=\(lat)" + "&lon=\(lon)" + "&format=json" + "&safe_search=1" + "&per_page=21" + "&accuracy=11" + "&nojsoncallback=1"+"&extras=url_m")!
+        let url = URL(string: baseURL + apiKeyParam + "&method=flickr.photos.search" + "&lat=\(lat)" + "&lon=\(lon)" + "&format=json" + "&safe_search=1" + "&per_page=20" + "&page=\(Int.random(in: 1...10))" + "&accuracy=11" + "&nojsoncallback=1" + "&extras=url_m")!
 
         taskForGETRequest(url: url, responseType: GetPhotoResponse.self) { (response, error) in
             if let response = response {

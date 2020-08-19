@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  VirtualTourist
+
+  Created by Riham Mastour on 24/12/1441 AH.
+  Copyright © 1441 Riham Mastour. All rights reserved.
+*/
+"CFBundleDisplayName" = "السائح الإفتراضي";
+"CFBundleName" = "السائح الإفتراضي";

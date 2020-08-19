@@ -19,6 +19,8 @@ class PhotoAlbumViewController: UIViewController {
     private var blockOperations: [BlockOperation] = []
 
     
+  
+    var appearanceSement: UISegmentedControl!
     @IBOutlet weak var newCollectionButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imageLabel: UILabel!
@@ -59,6 +61,7 @@ class PhotoAlbumViewController: UIViewController {
         
         //Tapping a cell adds it to the current selection, tapping the cell again removes it from the selection
         collectionView.allowsMultipleSelection = true
+        
                        
        }
        
@@ -186,14 +189,30 @@ class PhotoAlbumViewController: UIViewController {
             sender.setTitle("New Collection", for: .normal)
             deletePhotos()
         }
+
+    }
+
+    func segmentControl(segment: UISegmentedControl){
+        switch segment.selectedSegmentIndex {
+        case 0:
+            overrideUserInterfaceStyle = .light
+        case 1:
+            overrideUserInterfaceStyle = .dark
+        case 2:
+            overrideUserInterfaceStyle = .unspecified
+        default:
+            break
+                               
+        }
     }
 
 }
+    
+
 
 extension PhotoAlbumViewController: UICollectionViewDelegate {
     
     //MARK: Restyle cells
-      
       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           // resize the cell
           return CGSize(width: (view.frame.size.width - (2 * 3)) / 3.0, height: (view.frame.size.width - (2 * 3)) / 3.0)
@@ -259,7 +278,7 @@ extension PhotoAlbumViewController: UICollectionViewDataSource {
         //start animating
         self.activityIndAnim(cell: cell, status: false)
         //fetching from CoreData
-                let photo = self.fetchedResultsController.object(at: indexPath)
+        let photo = self.fetchedResultsController.object(at: indexPath)
         if let image = photo.imageData{
             cell.image.image = UIImage(data:image)
         } else {

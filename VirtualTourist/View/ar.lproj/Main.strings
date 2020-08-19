@@ -1,0 +1,21 @@
+
+/* Class = "UISegmentedControl"; 1hG-b2-8wv.segmentTitles[0] = "Light"; ObjectID = "mAf-O3-Ptp"; */
+"mAf-O3-Ptp.segmentTitles[0]" = "فاتح";
+
+/* Class = "UISegmentedControl"; 1hG-b2-8wv.segmentTitles[1] = "Dark"; ObjectID = "mAf-O3-Ptp"; */
+"mAf-O3-Ptp.segmentTitles[1]" = "قاتم";
+
+/* Class = "UISegmentedControl"; 1hG-b2-8wv.segmentTitles[2] = "System"; ObjectID = "mAf-O3-Ptp"; */
+"mAf-O3-Ptp.segmentTitles[2]" = "نظام";
+
+/* Class = "UIButton"; normalTitle = "New Collection"; ObjectID = "Q4f-dd-m7x"; */
+"Q4f-dd-m7x.normalTitle" = "صور جديدة!";
+
+/* Class = "UINavigationItem"; title = "Virtual Tourist"; ObjectID = "TCA-ee-pAR"; */
+"TCA-ee-pAR.title" = "السائح الإفتراضي";
+
+/* Class = "UIButton"; normalTitle = "Delete Pins"; ObjectID = "S2a-0V-oC2"; */
+"S2a-0V-oC2.normalTitle" = "إزالة الدبابيس!";
+
+/* Class = "Label"; normalTitle = "No Images Found."; ObjectID = "oAm-8j-Gfu"; */
+"oAm-8j-Gfu.text" = "لم  نجد أي صور!";
